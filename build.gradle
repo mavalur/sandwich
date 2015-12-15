@@ -56,6 +56,8 @@ dependencies {
     compile('org.projectlombok:lombok:1.16.6')
     compile('com.google.guava:guava:18.0')
     compile('com.mysema.querydsl:querydsl-jpa:3.7.0')
+    compile('mysql:mysql-connector-java:5.1.38')
+    compile('com.h2database:h2:1.4.190')
     testCompile('org.springframework.boot:spring-boot-starter-test')
     querydslapt "com.mysema.querydsl:querydsl-apt:3.7.0"
 }
