@@ -1,6 +1,7 @@
 package com.sudo.sandwich.domain;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import org.springframework.data.jpa.domain.AbstractAuditable;
 

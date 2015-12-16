@@ -1,8 +1,13 @@
 package com.sudo.sandwich.domain;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.jpa.domain.AbstractAuditable;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
@@ -12,9 +17,11 @@ import java.util.List;
 @AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "APP_ID"))
 })
 @Entity
+@Data
 public class Application extends AbstractAuditable<Application, Long> {
 
     @Column(name = "APP_NAME")
+    @NotNull
     String applicationName;
 
     @ManyToMany
