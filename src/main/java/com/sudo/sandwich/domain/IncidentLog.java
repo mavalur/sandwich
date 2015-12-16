@@ -1,7 +1,10 @@
 package com.sudo.sandwich.domain;
 
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.AbstractAuditable;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -13,13 +16,20 @@ import java.time.LocalDateTime;
 })
 @Entity
 @Data
-public class IncidentLog extends AbstractAuditable<IncidentLog, Long> {
+public class IncidentLog extends AbstractPersistable<Long> {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "leafBenchmark", referencedColumnName = "INCIDENT_ID")
     Incident incident;
 
     LocalDateTime loggedAt;
+
+    @CreatedDate
+    private LocalDateTime createdDate;
+
+    @LastModifiedDate
+    private LocalDateTime updatedDate;
+
 
 
 }
