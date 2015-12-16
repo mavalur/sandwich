@@ -6,22 +6,32 @@ import org.springframework.data.jpa.domain.AbstractAuditable;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Collection;
 
 /**
  * Created by satishterala on 12/15/15.
  */
+
 @Entity
-
 @Data
-public class Incident extends AbstractAuditable<Incident,Long>{
+@AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "INCIDENT_ID"))
+})
 
-    /**The application to which this incident needs to be assigned to **/
+public class Incident extends AbstractAuditable<Incident, Long> {
+
+    /**
+     * The application to which this incident needs to be assigned to
+     **/
     @ManyToOne
+    @JoinColumn(name = "APP_ID")
     Application application;
 
     @NotNull
     @Enumerated(EnumType.STRING)
     IncidentStatus incidentStatus;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER, mappedBy = "incident")
+    Collection<IncidentLog> incidentLogs;
 
 
 }

@@ -58,6 +58,7 @@ dependencies {
     compile('com.mysema.querydsl:querydsl-jpa:3.7.0')
     compile('mysql:mysql-connector-java:5.1.38')
     compile('com.h2database:h2:1.4.190')
+    compile('joda-time:joda-time:2.3')
     testCompile('org.springframework.boot:spring-boot-starter-test')
     querydslapt "com.mysema.querydsl:querydsl-apt:3.7.0"
 }
