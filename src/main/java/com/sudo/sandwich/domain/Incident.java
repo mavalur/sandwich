@@ -1,5 +1,7 @@
 package com.sudo.sandwich.domain;
 
+import com.sudo.sandwich.vo.IncidentSummary;
+import com.twitter.Extractor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.CreatedDate;
@@ -9,7 +11,10 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by satishterala on 12/15/15.
@@ -19,7 +24,7 @@ import java.util.Collection;
 @Data
 @AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "INCIDENT_ID"))
 })
-@EqualsAndHashCode(callSuper=false)
+@EqualsAndHashCode(callSuper = false)
 public class Incident extends AbstractPersistable<Long> {
 
     /**
@@ -33,10 +38,9 @@ public class Incident extends AbstractPersistable<Long> {
     @Enumerated(EnumType.STRING)
     IncidentStatus incidentStatus;
 
-
-
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy = "incident")
-    Collection<IncidentLog> incidentLogs;
+    @ElementCollection(fetch = FetchType.LAZY)
+    @CollectionTable(name = "PHONE_NUMBER", joinColumns = {@JoinColumn(name = "APP_USER_ID")})
+    private Collection<IncidentLog> incidentLogs = new ArrayList<>();
 
     @CreatedDate
     private LocalDateTime createdDate;
@@ -44,6 +48,32 @@ public class Incident extends AbstractPersistable<Long> {
     @LastModifiedDate
     private LocalDateTime updatedDate;
 
+    @Transient
+    Extractor extractor;
+
+
+    @OneToOne(cascade = CascadeType.ALL, optional = true, fetch = FetchType.LAZY, orphanRemoval = true)
+    @PrimaryKeyJoinColumn
+    Bridge bridge;
+
+
+    public void addLog(String logStatement, String logUser) {
+        List<String> hashtags = extractor.extractHashtags(logStatement);
+        IncidentLog incidentLog;
+        if (hashtags.contains(getId()))
+            incidentLog = new IncidentLog(LocalDateTime.now(), Boolean.TRUE, logStatement, logUser);
+        else
+            incidentLog = new IncidentLog(LocalDateTime.now(), Boolean.FALSE, logStatement, logUser);
+        this.incidentLogs.add(incidentLog);
+    }
+
+    public IncidentSummary generateIncidentSummary() {
+        return new IncidentSummary(this.getId(), getSummaryNotes(), this.incidentStatus, createdDate);
+    }
+
+    private List<String> getSummaryNotes() {
+        return incidentLogs.stream().filter(incidentLog -> incidentLog.isHashTagged).map(incidentLog1 -> incidentLog1.getLogStatement()).collect(Collectors.toList());
+    }
 
 
 }

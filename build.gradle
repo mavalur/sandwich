@@ -51,6 +51,7 @@ dependencies {
     //compile('org.springframework.boot:spring-boot-starter-integration')
     //compile('org.springframework.boot:spring-boot-starter-jersey')
     compile('javax.inject:javax.inject:1')
+    compile('com.twitter:twitter-text:1.6.1')
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-starter-websocket')
     compile('org.projectlombok:lombok:1.16.6')

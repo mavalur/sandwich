@@ -3,7 +3,6 @@ package com.sudo.sandwich.domain;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.AbstractAuditable;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
@@ -19,7 +18,7 @@ import java.util.List;
 })
 @Entity
 @Data
-@EqualsAndHashCode(callSuper=false)
+@EqualsAndHashCode(callSuper = false)
 public class Application extends AbstractPersistable<Long> {
 
 
@@ -31,9 +30,12 @@ public class Application extends AbstractPersistable<Long> {
     @NotNull
     String applicationName;
 
-    @ManyToMany
-    @JoinTable(name = "APPLICATION_TO_USER", joinColumns = {@JoinColumn(name = "APP_ID")}, inverseJoinColumns = {@JoinColumn(name = "APP_USER_ID")})
-    List<ApplicationUser> applicationUsers;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "applicationTeam", referencedColumnName = "TEAM_ID", foreignKey = @ForeignKey(name = "FK_APP_APPTEAM"))
+    ApplicationTeam applicationTeam;
+
+
+
 
     @CreatedDate
     private LocalDateTime createdDate;

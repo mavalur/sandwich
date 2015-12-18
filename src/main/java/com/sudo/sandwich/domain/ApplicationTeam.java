@@ -3,6 +3,7 @@ package com.sudo.sandwich.domain;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -16,9 +17,13 @@ public class ApplicationTeam extends Team{
 
 
     @ManyToMany
-    @JoinTable(name = "APPLICATION_TO_USER", joinColumns = {@JoinColumn(name = "APP_ID")}, inverseJoinColumns = {@JoinColumn(name = "APP_USER_ID")})
+    @JoinTable(name = "APP_TEAM_PERSON", joinColumns = {@JoinColumn(name = "APP_ID")}, inverseJoinColumns = {@JoinColumn(name = "APP_USER_ID")})
     @OrderBy("CALL_ORDER ASC")
-    private List<ApplicationUser> applicationUsers;
+    private List<Person> persons;
+
+
+    @OneToMany
+    Collection<Application> applications;
 
 
 

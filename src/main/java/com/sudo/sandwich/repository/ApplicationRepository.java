@@ -10,4 +10,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ApplicationRepository extends JpaRepository<Application, Long>, QueryDslPredicateExecutor<Application> {
+    public Application findByApplicationCode(String appCode);
 }

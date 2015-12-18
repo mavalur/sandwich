@@ -17,11 +17,11 @@ import java.util.Collection;
  * Created by satishterala on 12/15/15.
  */
 @Entity
-@AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "APP_USER_ID"))
+@AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "PERSON_ID"))
 })
 @EqualsAndHashCode(callSuper=false)
 @Data
-public class ApplicationUser extends AbstractPersistable<Long> implements Ordered{
+public class Person extends AbstractPersistable<Long> implements Ordered{
 
     @Email
     @NotNull
@@ -41,7 +41,7 @@ public class ApplicationUser extends AbstractPersistable<Long> implements Ordere
     private Integer callOrder;
 
 
-    @ManyToMany(mappedBy = "applicationUsers")
+    @ManyToMany(mappedBy = "persons")
     private Collection<ApplicationTeam> applicationTeams =  new ArrayList<>();
 
     @ElementCollection
