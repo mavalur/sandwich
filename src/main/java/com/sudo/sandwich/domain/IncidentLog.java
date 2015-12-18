@@ -1,6 +1,7 @@
 package com.sudo.sandwich.domain;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.AbstractAuditable;
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
 @AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "INCIDENT_LOG_ID"))
 })
 @Entity
+@EqualsAndHashCode(callSuper=false)
 @Data
 public class IncidentLog extends AbstractPersistable<Long> {
 

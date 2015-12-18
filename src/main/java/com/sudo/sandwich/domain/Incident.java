@@ -1,11 +1,9 @@
 package com.sudo.sandwich.domain;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.AbstractAuditable;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
@@ -21,7 +19,7 @@ import java.util.Collection;
 @Data
 @AttributeOverrides({@AttributeOverride(name = "id", column = @Column(name = "INCIDENT_ID"))
 })
-
+@EqualsAndHashCode(callSuper=false)
 public class Incident extends AbstractPersistable<Long> {
 
     /**
@@ -37,7 +35,7 @@ public class Incident extends AbstractPersistable<Long> {
 
 
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER, mappedBy = "incident")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy = "incident")
     Collection<IncidentLog> incidentLogs;
 
     @CreatedDate
