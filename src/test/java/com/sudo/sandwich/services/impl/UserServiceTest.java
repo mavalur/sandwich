@@ -30,7 +30,6 @@ public class UserServiceTest {
     @Test
     public void testUserRetrievalByUserName(){
         User teralS = userService.getUser("TeralS");
-
         System.out.println("teralS = " + teralS);
     }
 

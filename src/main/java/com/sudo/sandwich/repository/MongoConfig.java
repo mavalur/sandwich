@@ -1,11 +1,9 @@
-package com.sudo.sandwich.config;
+package com.sudo.sandwich.repository;
 
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.mongodb.MongoDbFactory;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
@@ -14,7 +12,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
  */
 @EnableMongoRepositories
 @Configuration
-public class MongoConfig extends AbstractMongoConfiguration{
+public class MongoConfig extends AbstractMongoConfiguration {
     @Override
     protected String getDatabaseName() {
         return "sandwich";
@@ -25,8 +23,5 @@ public class MongoConfig extends AbstractMongoConfiguration{
         return new MongoClient(new MongoClientURI("mongodb://sandwich:sandwich@ds035385.mongolab.com:35385/sandwich"));
     }
 
-    @Override
-    protected String getMappingBasePackage() {
-        return "com.sudo.sandwich.repository";
-    }
+
 }
