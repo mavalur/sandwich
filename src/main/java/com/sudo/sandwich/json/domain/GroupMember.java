@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.TextIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -27,6 +28,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 })
 @Document(collection = "grp_members")
 public class GroupMember {
+
+    @Id
+    private String id;
+
 
     @JsonProperty("__status")
     private String Status;
