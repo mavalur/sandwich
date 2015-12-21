@@ -30,13 +30,13 @@ repositories {
 
 configurations {
     providedRuntime
-    querydslapt
+    //querydslapt
 }
 
-sourceSets{
-    generated{
-        java{
-            srcDirs=['src/main/generated']
+sourceSets {
+    generated {
+        java {
+            srcDirs = ['src/main/generated']
         }
     }
 }
@@ -46,7 +46,7 @@ dependencies {
     //compile('org.springframework.cloud:spring-cloud-starter-aws')
     //compile('org.springframework.cloud:spring-cloud-starter-aws-jdbc')
     //compile('org.springframework.cloud:spring-cloud-starter-aws-messaging')
-    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    //compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('org.springframework.boot:spring-boot-devtools')
     //compile('org.springframework.boot:spring-boot-starter-integration')
     //compile('org.springframework.boot:spring-boot-starter-jersey')
@@ -56,12 +56,13 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-websocket')
     compile('org.projectlombok:lombok:1.16.6')
     compile('com.google.guava:guava:18.0')
-    compile('com.mysema.querydsl:querydsl-jpa:3.7.0')
-    compile('mysql:mysql-connector-java:5.1.38')
-    compile('com.h2database:h2:1.4.190')
+    //compile('com.mysema.querydsl:querydsl-jpa:3.7.0')
+    //compile('mysql:mysql-connector-java:5.1.38')
+    //compile('com.h2database:h2:1.4.190')
     compile('joda-time:joda-time:2.3')
+    compile('org.springframework.data:spring-data-mongodb:1.8.2.RELEASE')
     testCompile('org.springframework.boot:spring-boot-starter-test')
-    querydslapt "com.mysema.querydsl:querydsl-apt:3.7.0"
+    //querydslapt "com.mysema.querydsl:querydsl-apt:3.7.0"
 }
 
 
@@ -72,7 +73,7 @@ dependencyManagement {
     }
 }
 
-task generateQueryDSL(type: JavaCompile, group: 'build', description: 'Generates the QueryDSL query types') {
+/*task generateQueryDSL(type: JavaCompile, group: 'build', description: 'Generates the QueryDSL query types') {
     source = sourceSets.main.java
     classpath = configurations.compile + configurations.querydslapt
     options.compilerArgs = [
@@ -80,17 +81,17 @@ task generateQueryDSL(type: JavaCompile, group: 'build', description: 'Generates
             "-processor", "com.mysema.query.apt.jpa.JPAAnnotationProcessor"
     ]
     destinationDir = sourceSets.generated.java.srcDirs.iterator().next()
-}
+}*/
 
 compileJava {
-    dependsOn generateQueryDSL
-    source generateQueryDSL.destinationDir
+    //dependsOn generateQueryDSL
+    //source generateQueryDSL.destinationDir
 }
 
 compileGeneratedJava {
-    dependsOn generateQueryDSL
-    options.warnings = false
-    classpath += sourceSets.main.runtimeClasspath
+    //dependsOn generateQueryDSL
+    //options.warnings = false
+    //classpath += sourceSets.main.runtimeClasspath
 }
 
 clean {
@@ -98,9 +99,11 @@ clean {
 }
 
 idea {
+/*
     module {
         sourceDirs += file('src/main/generated')
     }
+*/
 }
 
 

@@ -14,6 +14,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import org.springframework.data.mongodb.core.index.TextIndexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
@@ -30,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "u_level",
         "u_business_domain"
 })
+@Document(collection = "apps")
 public class Application {
 
     @JsonProperty("support_group")
@@ -43,6 +46,7 @@ public class Application {
     @JsonProperty("u_type")
     private String uType;
     @JsonProperty("u_wmc_app_id")
+    @TextIndexed
     private String uWmcAppId;
     @JsonProperty("u_wmc_central_category")
     private Object uWmcCentralCategory;
@@ -52,6 +56,7 @@ public class Application {
     private String uSupportTier2;
     @JsonProperty("u_level")
     private String uLevel;
+    @TextIndexed
     @JsonProperty("u_business_domain")
     private String uBusinessDomain;
     @JsonIgnore

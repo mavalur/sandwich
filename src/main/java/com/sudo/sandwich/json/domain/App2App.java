@@ -20,26 +20,46 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
 @JsonPropertyOrder({
+        "child",
         "__status",
-        "group",
-        "sys_id",
-        "user"
+        "connection_strength",
+        "dv_parent",
+        "dv_child"
 })
-@Document(collection = "grp_members")
-public class GroupMember {
+@Document(collection = "app2app")
+public class App2App {
 
+    @TextIndexed
+    @JsonProperty("child")
+    private String child;
     @JsonProperty("__status")
     private String Status;
+    @JsonProperty("connection_strength")
+    private String connectionStrength;
     @TextIndexed
-    @JsonProperty("group")
-    private String group;
-    @JsonProperty("sys_id")
-    private String sysId;
+    @JsonProperty("dv_parent")
+    private String dvParent;
     @TextIndexed
-    @JsonProperty("user")
-    private String user;
+    @JsonProperty("dv_child")
+    private String dvChild;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+    /**
+     * @return The child
+     */
+    @JsonProperty("child")
+    public String getChild() {
+        return child;
+    }
+
+    /**
+     * @param child The child
+     */
+    @JsonProperty("child")
+    public void setChild(String child) {
+        this.child = child;
+    }
 
     /**
      * @return The Status
@@ -58,51 +78,51 @@ public class GroupMember {
     }
 
     /**
-     * @return The group
+     * @return The connectionStrength
      */
-    @JsonProperty("group")
-    public String getGroup() {
-        return group;
+    @JsonProperty("connection_strength")
+    public String getConnectionStrength() {
+        return connectionStrength;
     }
 
     /**
-     * @param group The group
+     * @param connectionStrength The connection_strength
      */
-    @JsonProperty("group")
-    public void setGroup(String group) {
-        this.group = group;
+    @JsonProperty("connection_strength")
+    public void setConnectionStrength(String connectionStrength) {
+        this.connectionStrength = connectionStrength;
     }
 
     /**
-     * @return The sysId
+     * @return The dvParent
      */
-    @JsonProperty("sys_id")
-    public String getSysId() {
-        return sysId;
+    @JsonProperty("dv_parent")
+    public String getDvParent() {
+        return dvParent;
     }
 
     /**
-     * @param sysId The sys_id
+     * @param dvParent The dv_parent
      */
-    @JsonProperty("sys_id")
-    public void setSysId(String sysId) {
-        this.sysId = sysId;
+    @JsonProperty("dv_parent")
+    public void setDvParent(String dvParent) {
+        this.dvParent = dvParent;
     }
 
     /**
-     * @return The user
+     * @return The dvChild
      */
-    @JsonProperty("user")
-    public String getUser() {
-        return user;
+    @JsonProperty("dv_child")
+    public String getDvChild() {
+        return dvChild;
     }
 
     /**
-     * @param user The user
+     * @param dvChild The dv_child
      */
-    @JsonProperty("user")
-    public void setUser(String user) {
-        this.user = user;
+    @JsonProperty("dv_child")
+    public void setDvChild(String dvChild) {
+        this.dvChild = dvChild;
     }
 
     @JsonAnyGetter

@@ -13,7 +13,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import org.springframework.data.mongodb.core.index.TextIndexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+
+@Document(collection = "users")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
 @JsonPropertyOrder({
@@ -36,9 +40,11 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class User {
 
     @JsonProperty("user_name")
+    @TextIndexed
     private String userName;
     @JsonProperty("sys_id")
     private String sysId;
+    @TextIndexed
     @JsonProperty("u_preferred_name")
     private String uPreferredName;
     @JsonProperty("name")
