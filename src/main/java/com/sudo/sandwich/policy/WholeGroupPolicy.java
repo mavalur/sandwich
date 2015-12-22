@@ -1,4 +1,4 @@
-package policy;
+package com.sudo.sandwich.policy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 
 import com.sudo.sandwich.json.domain.GroupMember;
 
-@Component("FirstInSequence")
-public class FirstInSequencePolicy implements OnCallPolicy {
+@Component("WholeGroup")
+public class WholeGroupPolicy implements OnCallPolicy {
 
 	@Override
 	public List<String> getOnCallUsers(List<GroupMember> groupMembers) {
@@ -16,7 +16,9 @@ public class FirstInSequencePolicy implements OnCallPolicy {
 		if (groupMembers.isEmpty()) {
 			return null;
 		} else {
-			ret.add(groupMembers.get(0).getUser());
+			for (GroupMember gm : groupMembers) {
+				ret.add(gm.getUser());
+			}
 		}
 		return ret;
 	}
