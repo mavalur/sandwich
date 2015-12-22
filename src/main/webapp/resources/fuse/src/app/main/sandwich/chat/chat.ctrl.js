@@ -1,3 +1,6 @@
+
+
+
 (function ()
 {
     'use strict';
@@ -7,15 +10,8 @@
         .controller('ChatController', ChatController);
 
     /** @ngInject */
-    function ChatController(SampleData)
+    function ChatController($document)
     {
-        var ctrl = this;
-
-        // Data
-        ctrl.helloText = SampleData.data.helloText;
-
-        // Methods
-
-        //////////
+      
     }
 })();

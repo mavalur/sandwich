@@ -7,7 +7,7 @@
         .controller('DashboardProjectController', DashboardProjectController);
 
     /** @ngInject */
-    function DashboardProjectController($scope, $interval,DashboardData,IncidentService)
+    function DashboardProjectController($scope, $interval,DashboardData,IncidentService,apiResolver)
     {
      	var vm = this; 
      	this.widget5 = this.widget5 || {};
@@ -18,6 +18,8 @@
 
      	this.widget7= this.widget7 || {};
      	this.widget7.title = 'Some other widget';
+
+        apiResolver.resolve('/list@get',{name:'value'});
 
     }
 

@@ -9,6 +9,8 @@
     /** @ngInject */
     function IncidentService($window)
     {
-    		//alert('sdf');
+    		return {
+    			
+    		}
     }
 }());

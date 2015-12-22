@@ -54,6 +54,7 @@
                     'content@app': {
                         templateUrl: 'app/main/sandwich/chat/chat.tpl.html',
                         controller : 'ChatController as ctrl'
+                        
                     }
                 },
                 resolve: {

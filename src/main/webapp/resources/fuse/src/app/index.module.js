@@ -19,7 +19,7 @@
 
             // Quick panel
             'app.quick-panel',
-
+                    
             // Sample
             'app.sandwich'
         ]);

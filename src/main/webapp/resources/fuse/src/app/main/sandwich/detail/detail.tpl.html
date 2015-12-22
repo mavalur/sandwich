@@ -44,10 +44,14 @@
 		</div>
 		<!-- / CONTENT -->
         <div>
-        	<button class="not-shared" id="screenshare" ng-click="startShare()">Start Screen Share</button>
-        	<button class="shared resumed" id="screenshare" ng-click="pauseShare()">Pause Screen Share</button>
-        	<button class="shared paused" id="screenshare" ng-click="resumeShare()">Resume Screen Share</button>
-        	<button class="shared" id="screenshare" ng-click="stopShare()">Stop Screen Share</button>
+        	<md-button class="md-icon-button not-shared" aria-label="More information" ng-click="vm.startShare()">
+                                        Start Screen</md-icon>
+                                    </md-button>
+
+        	<!-- <button class="not-shared" id="screenshare"  >Start Screen Share</button> -->
+        	<button class="shared resumed" id="screenshare" ng-click="vm.pauseShare()">Pause Screen Share</button>
+        	<button class="shared paused" id="screenshare" ng-click="vm.resumeShare()">Resume Screen Share</button>
+        	<button class="shared" id="screenshare" ng-click="vm.stopShare()">Stop Screen Share</button>
         	<p>
         	<label id="label1">Screen Share View URL : </label>
         	<a href="" id="viewerUrl" target="_blank"/>

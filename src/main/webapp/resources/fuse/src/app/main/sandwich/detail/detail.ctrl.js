@@ -22,7 +22,7 @@
         
         this.shareViewerUrl = '';
         
-		window.onload = function() {
+		
 		    screenleap.onScreenShareStart = function() {
 		        alert('Your screen is now shared.');
 	       		$('.shared').show();
@@ -54,9 +54,9 @@
 		        }
 		        alert('Error in ' + msg);
 		    };
-		}
+		
 
-	    function startShare() {
+	    this.startShare = function() {
 	    	$.ajax({
 	        	url: "/screenshare"
 	    	}).done(function(data) {
@@ -65,17 +65,17 @@
 	       		$('#viewerUrl').attr('href', data.viewerUrl);
 	       		$('#viewerUrl').text(data.viewerUrl);
 	    	});
-	    }
+	    };
     
-	    function pauseShare() {
+	    this.pauseShare =  function() {
 	    	screenleap.pauseSharing(); 
 	    }
 
-	    function resumeShare() {
+	    this.resumeShare= function() {
 	    	screenleap.resumeSharing(); 
 	    }
 	    
-	    function stopShare() {
+	    this.stopShare= function() {
 	    	screenleap.stopSharing();
 	    	this.shareViewerUrl = '';
        		$('#viewerUrl').attr('href', '');
