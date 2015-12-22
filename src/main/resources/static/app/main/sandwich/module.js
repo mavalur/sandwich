@@ -15,26 +15,27 @@
                 url    : '/incident',
                 views  : {
                     'content@app': {
-                        templateUrl: 'app/main/sandwich/dahsboard/dashboard.tpl.html',
-                        controller : 'DashboardController as ctrl'
+                        templateUrl: 'app/main/sandwich/dashboard/dashboard.tpl.html',
+                        controller : 'DashboardProjectController as vm'
                     }
                 },
-                resolve: {
-                    SampleData: function (apiResolver)
-                    {
-                        return {
+            resolve  : {
+                DashboardData: function (apiResolver)
+                {
+                    return {
                             data:{
-                                helloText:'dashboard page'
+                                helloText:'detail page'
                             }
                         }
-                    }
                 }
+            },
+            bodyClass: 'dashboard-project'        
             }).state('app.dashboard.detail', {
                 url    : '/:incId',
                 views  : {
                     'content@app': {
                         templateUrl: 'app/main/sandwich/detail/detail.tpl.html',
-                        controller : 'DetailController as ctrl'
+                        controller : 'DetailController as vm'
                     }
                 },
                 resolve: {
@@ -53,6 +54,7 @@
                     'content@app': {
                         templateUrl: 'app/main/sandwich/chat/chat.tpl.html',
                         controller : 'ChatController as ctrl'
+                        
                     }
                 },
                 resolve: {
