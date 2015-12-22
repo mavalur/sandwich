@@ -37,12 +37,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "apps")
 public class Application {
 
-    @Id
-    private String id;
     @Version
     Long version;
-
-
+    @Id
+    private String id;
     @JsonProperty("support_group")
     private String supportGroup;
     @JsonProperty("subcategory")

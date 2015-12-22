@@ -58,7 +58,7 @@ dependencies {
     compile('com.google.guava:guava:18.0')
     compile('joda-time:joda-time:2.3')
     compile('com.mysema.querydsl:querydsl-mongodb:3.7.0')
-
+    compile('org.apache.commons:commons-lang3:3.4')
     compile('org.springframework.data:spring-data-mongodb:1.8.2.RELEASE')
     testCompile('org.springframework.boot:spring-boot-starter-test')
     querydslapt "com.mysema.querydsl:querydsl-apt:3.7.0"

@@ -16,4 +16,6 @@ public interface ApplicationRepository extends MongoRepository<Application, Stri
     Application findByUWmcAppId(String applId);
 
     Collection<Application> findByUBusinessUnit(String businessUnit);
+
+    Application findBySupportGroup(String supportGroup);
 }

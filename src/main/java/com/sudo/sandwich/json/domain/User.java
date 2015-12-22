@@ -40,14 +40,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
         "u_vip_type"
 })
 public class User {
-    @Id
-    private String id;
     @Version
     Long version;
-
+    @Id
+    private String id;
     @JsonProperty("user_name")
     @TextIndexed
     private String userName;
+    @JsonProperty("group_id")
+    private String groupId;
     @JsonProperty("sys_id")
     private String sysId;
     @TextIndexed
@@ -330,4 +331,11 @@ public class User {
         this.additionalProperties.put(name, value);
     }
 
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
+    }
 }

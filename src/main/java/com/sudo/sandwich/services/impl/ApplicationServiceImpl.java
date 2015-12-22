@@ -34,4 +34,9 @@ public class ApplicationServiceImpl implements ApplicationService {
     public Collection<Application> getApplicationForBusinessUnit(String businessUnit) {
         return applicationRepository.findByUBusinessUnit(businessUnit);
     }
+
+    @Override
+    public Application getApplicationBySupportGroup(String supportGrp) {
+        return applicationRepository.findBySupportGroup(supportGrp);
+    }
 }

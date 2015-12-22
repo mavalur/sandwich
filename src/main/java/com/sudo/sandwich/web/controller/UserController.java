@@ -37,12 +37,12 @@ public class UserController {
         return user;
     }
 
-    @RequestMapping(value = "/sudo/user/mobile/{userId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/sudo/user/mobile/{userId}")
     public
     @ResponseBody
     String getMobileNumberFor(@PathVariable("userId") String userId) {
         User user = userService.getUser(userId);
-        logger.info("User {}", user);
+        logger.info("Mobile # {}", user == null ? "" : user.getMobilePhone());
         return user == null ? "" : user.getMobilePhone();
     }
 
