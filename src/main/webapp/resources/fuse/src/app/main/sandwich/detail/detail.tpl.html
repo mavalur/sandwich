@@ -11,11 +11,7 @@
 				<div>
 					<span class="md-display-1 font-weight-300">Incident Detail -
 						{{vm.incId}}</span>
-
-
 				</div>
-
-
 			</div>
 
 			<!-- <div layout="row">
@@ -45,13 +41,17 @@
 			<a class="md-primary md-button md-ink-ripple" layout="right"
 				ui-sref="app.dashboard.detail.chat()">Initiate Bridge</a>
 
-
-
-
-
-
 		</div>
 		<!-- / CONTENT -->
+        <div>
+        	<button class="not-shared" id="screenshare" ng-click="startShare()">Start Screen Share</button>
+        	<button class="shared resumed" id="screenshare" ng-click="pauseShare()">Pause Screen Share</button>
+        	<button class="shared paused" id="screenshare" ng-click="resumeShare()">Resume Screen Share</button>
+        	<button class="shared" id="screenshare" ng-click="stopShare()">Stop Screen Share</button>
+        	<p>
+        	<label id="label1">Screen Share View URL : </label>
+        	<a href="" id="viewerUrl" target="_blank"/>
+        </div>
 
 	</div>
 	<!-- / CENTER -->

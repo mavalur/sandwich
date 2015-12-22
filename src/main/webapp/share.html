@@ -53,7 +53,8 @@
 			        	url: "/screenshare"
 			    	}).done(function(data) {
 				    	screenleap.startSharing('NATIVE', data);
-			       		$('#viewerUrl').append(data.viewerUrl);
+			       		$('#viewerUrl').attr('href', data.viewerUrl);
+			       		$('#viewerUrl').text(data.viewerUrl);
 			    	});
 			    }
 		    
@@ -67,6 +68,8 @@
 			    
 			    function stopShare() {
 			    	screenleap.stopSharing();
+			       		$('#viewerUrl').attr('href', '');
+			       		$('#viewerUrl').text('');
 			    }
 			    
 		</script>
@@ -79,8 +82,8 @@
         	<button class="shared paused" id="screenshare" onclick="resumeShare()">Resume Screen Share</button>
         	<button class="shared" id="screenshare" onclick="stopShare()">Stop Screen Share</button>
         	<p>
-        	<label id="label1">Viewer URL : </label>
-        	<label id="viewerUrl"/>
+        	<label id="label1">Screen Share View URL : </label>
+        	<a href="" id="viewerUrl" target="_blank"/>
         </div>
     </body>
 </html>
