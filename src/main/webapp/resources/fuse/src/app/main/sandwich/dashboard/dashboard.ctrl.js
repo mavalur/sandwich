@@ -7,7 +7,7 @@
         .controller('DashboardProjectController', DashboardProjectController);
 
     /** @ngInject */
-    function DashboardProjectController($scope, $interval,DashboardData)
+    function DashboardProjectController($scope, $interval,DashboardData,IncidentService)
     {
      	var vm = this; 
      	this.widget5 = this.widget5 || {};
