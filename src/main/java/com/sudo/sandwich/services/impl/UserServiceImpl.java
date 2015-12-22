@@ -23,6 +23,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String getAvayaExtension(String userId) {
+
         return userRepository.findByUserName(userId).getUAvayaExtension();
     }
 
