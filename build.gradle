@@ -4,9 +4,13 @@ buildscript {
     }
     repositories {
         mavenCentral()
+        maven {
+            url 'https://plugins.gradle.org/m2/'
+        }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath 'com.moowork.gradle:gradle-gulp-plugin:0.11'
     }
 }
 
@@ -14,6 +18,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot'
+apply plugin: 'com.moowork.gulp'
 
 jar {
     baseName = 'hackathon'
@@ -100,6 +105,25 @@ idea {
 
 }
 
+gulp {
+    // Set the directory where gulpfile.js should be found
+    workDir = file("static")
+
+    // Whether colors should output on the terminal
+    colors = true
+
+    // Whether output from Gulp should be buffered - useful when running tasks in parallel
+    bufferOutput = false
+}
+
+node {
+    // Version of node to use.
+    version = '0.10.22'
+
+    // Enabled the automatic download. False is the default (for now).
+    download = true
+}
+
 
 eclipse {
     classpath {
@@ -108,7 +132,14 @@ eclipse {
     }
 }
 
+// makes sure on each build that gulp is installed
+//gulp_build.dependsOn 'installGulp'
 
+// processes your package.json before running gulp build
+//gulp_build.dependsOn 'npmInstall'
+
+// runs "gulp build" as part of your gradle build
+//build.dependsOn gulp_build
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.9'
