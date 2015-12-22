@@ -5,9 +5,9 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.inject.Inject;
 
+import com.sudo.sandwich.policy.OnCallPolicy;
 import org.springframework.stereotype.Service;
 
-import policy.OnCallPolicy;
 
 import com.sudo.sandwich.json.domain.GroupMember;
 import com.sudo.sandwich.repository.GroupMemberRepository;
@@ -21,15 +21,15 @@ public class OnCallServiceImpl implements OnCallService {
 
     @Resource(name = "WholeGroup")
     OnCallPolicy wholeGroupPolicy;
-    
+
     @Resource(name = "FirstInSequence")
     OnCallPolicy firstInSequencePolicy;
-    
-	@Override
-	public List<String> getOnCallUser(String groupId) {
-		List<GroupMember> users = gmRepository.findByGroup(groupId);
-		
-		return firstInSequencePolicy.getOnCallUsers(users);
-	}
+
+    @Override
+    public List<String> getOnCallUser(String groupId) {
+        List<GroupMember> users = gmRepository.findByGroup(groupId);
+
+        return firstInSequencePolicy.getOnCallUsers(users);
+    }
 
 }
