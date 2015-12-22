@@ -200,4 +200,4 @@ bower_components
 .node_repl_history
 
 # generated code
-src\main\generated
+/src/main/generated
