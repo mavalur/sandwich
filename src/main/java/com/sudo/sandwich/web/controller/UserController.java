@@ -28,7 +28,7 @@ public class UserController {
     @Inject
     UserService userService;
 
-    @RequestMapping("/sudo/user/{userId}")
+    @RequestMapping("sudo/user/{userId}")
     public
     @ResponseBody
     User getUser(@PathVariable("userId") String userId) {
@@ -37,7 +37,7 @@ public class UserController {
         return user;
     }
 
-    @RequestMapping(value = "/sudo/user/mobile/{userId}", method = RequestMethod.GET)
+    @RequestMapping(value = "sudo/user/mobile/{userId}", method = RequestMethod.GET)
     public
     @ResponseBody
     String getMobileNumberFor(@PathVariable("userId") String userId) {
