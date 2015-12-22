@@ -54,16 +54,13 @@
 				}
 
 			    function startShare() {
-			    	if (sharedata === undefined || sharedata === null) {
 				    	$.ajax({
-				        	url: "/screenshare"
+				        	url: "/screenshare",
+				        	type: "POST"
 				    	}).done(function(data) {
 					    	sharedata = data;
 					    	screenleap.startSharing('NATIVE', sharedata);
 				    	});
-				    } else {
-				    	screenleap.startSharing('NATIVE', sharedata);
-				    }
 			    }
 		    
 			    function pauseShare() {

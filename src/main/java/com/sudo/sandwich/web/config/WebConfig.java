@@ -24,5 +24,6 @@ public class WebConfig extends WebMvcAutoConfiguration.WebMvcAutoConfigurationAd
         registry.addResourceHandler("/assets/**").addResourceLocations(prefix + staticDir + "/assets/");
         registry.addResourceHandler("/bower_components/**").addResourceLocations(prefix + staticDir + "/bower_components/");
         registry.addResourceHandler("index.html").addResourceLocations(prefix + staticDir + "/index.html");
+        registry.addResourceHandler("share.html").addResourceLocations(prefix + staticDir + "/share.html");
     }
 }
