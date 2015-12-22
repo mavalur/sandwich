@@ -6,15 +6,13 @@ import com.sudo.sandwich.services.UserService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.inject.Inject;
 
 /**
+ * User
  * Created by satishterala on 12/21/15.
  */
 @RestController
@@ -25,21 +23,33 @@ public class UserController {
 
     @Inject
     OnCallService onCallService;
-    
+
 
     @Inject
     UserService userService;
-    @RequestMapping("/sudo/user")
+
+    @RequestMapping("/sudo/user/{userId}")
     public
     @ResponseBody
-    User getUser(@PathVariable String userId) {
-        return userService.getUser(userId);
+    User getUser(@PathVariable("userId") String userId) {
+        User user = userService.getUser(userId);
+        logger.info("User {}", user);
+        return user;
+    }
+
+    @RequestMapping(value = "/sudo/user/mobile/{userId}", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    String getMobileNumberFor(@PathVariable("userId") String userId) {
+        User user = userService.getUser(userId);
+        logger.info("User {}", user);
+        return user == null ? "" : user.getMobilePhone();
     }
 
     @RequestMapping("/onCall")
     public ModelAndView getOnCallUsers(@PathVariable String groupId) {
-    	ModelAndView mv = new ModelAndView();
-    	mv.addObject("users", onCallService.getOnCallUser(groupId));
-    	return mv;
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("users", onCallService.getOnCallUser(groupId));
+        return mv;
     }
 }
