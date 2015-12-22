@@ -7,7 +7,7 @@ sudo_make_me_sandwich
 - Persist all incident details and chat log into BSON documents into Mongo DB.
 - Page has a integration with twilio for initiaitng a conference bridge.
 - Ability to add a group or a particular user from the group the bridge. 
-- Ability to initiate screen share from the webpage.
+- Ability to initiate screen share from the chatpage.
 - Predefined hashtags that serve the purpose of indicating special statments.
 - Add a #RootCause to the chat statement- the statement goes into the executive summary and also to the incident summary at the top
 - Add #Resolution to the chat statement - statemet gets added to the exec summary under resolution.
