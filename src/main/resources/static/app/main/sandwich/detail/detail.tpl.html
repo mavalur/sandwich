@@ -40,16 +40,11 @@
 
 			<a class="md-primary md-button md-ink-ripple" layout="right"
 				ui-sref="app.dashboard.detail.chat()">Initiate Bridge</a>
-
-		</div>
-		<!-- / CONTENT -->
-        <div>
-        	<md-button class="md-button md-raised not-shared" aria-label="More information" ng-click="vm.startShare()">Start Sharing</md-button>
-        	<md-button class="md-raised md-warn md-button md-ink-ripple" aria-label="More information" ng-click="vm.pauseShare()">Pause</md-button>
-        	<md-button class="md-raised md-primary md-button md-ink-ripple" aria-label="More information" ng-click="vm.resumeShare()">Resume</md-button>
-        	<md-button class="md-raised  md-button md-ink-ripple" aria-label="More information" ng-click="vm.stopShare()">Stop</md-button>
-        	<a class="md-primary md-button md-ink-ripple" layout="right"
-				ui-sref="app.dashboard.detail.chat()">{{vm.viewerUrl}}</a>
+        	<md-button class="md-button md-raised not-shared" aria-label="More information" ng-click="vm.startShare()">Share Screen</md-button>
+        	<md-button class="md-raised md-warn md-button md-ink-ripple shared resumed" aria-label="More information" ng-click="vm.pauseShare()">Pause Screen Share</md-button>
+        	<md-button class="md-raised md-primary md-button md-ink-ripple shared paused" aria-label="More information" ng-click="vm.resumeShare()">Resume Screen Share</md-button>
+        	<md-button class="md-raised  md-button md-ink-ripple shared" aria-label="More information" ng-click="vm.stopShare()">Stop Screen Share</md-button>
+        	<a class="md-primary md-button md-ink-ripple" layout="right" ui-sref="">{{vm.viewerUrl}}</a>
         	<!-- <div>
         		<a href="{{vm.viewerUrl}}" id="viewerUrl" target="_blank">{{vm.viewerUrl}}</a>
         	</div> -->
@@ -58,8 +53,6 @@
         	<button class="shared resumed" id="screenshare" ng-click="vm.pauseShare()"></button>
         	<button class="shared paused" id="screenshare" ng-click="vm.resumeShare()">Resume Screen Share</button>
         	<button class="shared" id="screenshare" ng-click="vm.stopShare()">Stop Screen Share</button> -->
-        	
-        	
         	
         </div>
 
