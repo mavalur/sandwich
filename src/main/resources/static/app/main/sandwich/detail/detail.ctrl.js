@@ -30,12 +30,14 @@
        		$('.not-shared').hide();
        		$('.paused').hide();
        		$('.resumed').show();
+    		vm.viewerUrl = screenleap.getViewerUrl();
 	    };
 	    
 	    screenleap.onScreenShareEnd = function() {
 	        alert('Your screen share has ended.');
        		$('.shared').hide();
        		$('.not-shared').show();
+       		vm.viewerUrl = '';
 	    };
 	    
 	    screenleap.onPause = function() {
@@ -59,11 +61,12 @@
 
 	    this.startShare = function() {
 	    	$.ajax({
+	    		context: this,
 	        	url: "/screenshare",
-	        	type: "POST"
-	    	}).done(function(data) {
-		    	screenleap.startSharing('NATIVE', data);
-	       		vm.viewerUrl = screenleap.getViewerUrl();
+	        	type: "POST",
+	        	success:  function(data) {
+	        		screenleap.startSharing('NATIVE', data);
+	        	}
 	    	});
 	    };
     
@@ -77,7 +80,6 @@
 	    
 	    this.stopShare= function() {
 	    	screenleap.stopSharing();
-       		vm.viewerUrl = '';
 	    }
     }
 })();
