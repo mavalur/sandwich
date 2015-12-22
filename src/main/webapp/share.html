@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Screen share</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script type="text/javascript" src="http://api.screenleap.com/js/screenleap.js"></script>
+		
+		<style type="text/css">
+			.shared {
+				display: none;
+			}
+		
+		</style>
+		
+		<script type="text/javascript">
+
+				window.onload = function() {
+				    screenleap.onScreenShareStart = function() {
+				        alert('Your screen is now shared.');
+			       		$('.shared').hide();
+			       		$('.not-shared').show();
+			       		$('.paused').hide();
+			       		$('.resumed').show();
+				    };
+				    
+				    screenleap.onScreenShareEnd = function() {
+				        alert('Your screen share has ended.');
+			       		$('.shared').hide();
+			       		$('.not-shared').show();
+				    };
+				    
+				    screenleap.onPause = function() {
+			       		$('.paused').show();
+			       		$('.resumed').hide();
+				    }
+	
+				    screenleap.onResume = function() {
+			       		$('.paused').hide();
+			       		$('.resumed').show();
+				    }
+				    
+				    screenleap.error = function(action, errorMessage, xhr) {
+				        var msg = action + ': ' + errorMessage;
+				        if (xhr) {
+				            msg += ' (' + xhr.status + ')';
+				        }
+				        alert('Error in ' + msg);
+				    };
+				}
+	
+			    function startShare() {
+			    	$.ajax({
+			        	url: "/screenshare"
+			    	}).done(function(data) {
+			    		var jsonData = JSON.parse(data);
+				    	screenleap.startSharing('NATIVE', jsonData);
+			       		$('#viewerUrl').append(jsonData.viewerUrl);
+			    	});
+			    }
+		    
+			    function pauseShare() {
+			    	screenleap.pauseSharing(); 
+			    }
+
+			    function resumeShare() {
+			    	screenleap.resumeSharing(); 
+			    }
+			    
+			    function stopShare() {
+			    	screenleap.stopSharing();
+			    }
+			    
+		</script>
+    </head>
+
+    <body>
+        <div>
+        	<button class="not-shared" id="screenshare" onclick="startShare()">Start Screen Share</button>
+        	<button class="shared resumed" id="screenshare" onclick="pauseShare()">Pause Screen Share</button>
+        	<button class="shared paused" id="screenshare" onclick="resumeShare()">Resume Screen Share</button>
+        	<button class="shared" id="screenshare" onclick="stopShare()">Stop Screen Share</button>
+        	<p>
+        	<label id="label1">Viewer URL : </label>
+        	<label id="viewerUrl"/>
+        </div>
+    </body>
+</html>
