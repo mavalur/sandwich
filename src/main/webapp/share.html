@@ -52,7 +52,6 @@
 			    	$.ajax({
 			        	url: "/screenshare"
 			    	}).done(function(data) {
-			    		var jsonData = JSON.parse(data);
 				    	screenleap.startSharing('NATIVE', data);
 			       		$('#viewerUrl').append(data.viewerUrl);
 			    	});
