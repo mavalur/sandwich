@@ -17,8 +17,8 @@
 				window.onload = function() {
 				    screenleap.onScreenShareStart = function() {
 				        alert('Your screen is now shared.');
-			       		$('.shared').hide();
-			       		$('.not-shared').show();
+			       		$('.shared').show();
+			       		$('.not-shared').hide();
 			       		$('.paused').hide();
 			       		$('.resumed').show();
 				    };
@@ -53,8 +53,8 @@
 			        	url: "/screenshare"
 			    	}).done(function(data) {
 			    		var jsonData = JSON.parse(data);
-				    	screenleap.startSharing('NATIVE', jsonData);
-			       		$('#viewerUrl').append(jsonData.viewerUrl);
+				    	screenleap.startSharing('NATIVE', data);
+			       		$('#viewerUrl').append(data.viewerUrl);
 			    	});
 			    }
 		    
