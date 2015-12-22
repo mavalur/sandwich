@@ -1,7 +1,6 @@
 # sudo_make_me_sandwich
 sudo_make_me_sandwich
 
-
 ####Planned Feature set
 - Single page chat acts the central point of incident management.
 - Persist all incident details and chat log into BSON documents into Mongo DB.
@@ -22,18 +21,18 @@ sudo_make_me_sandwich
 - Angular for UI
 - ngrok for secure tunnels to localhost 
 - screenleap for screen sharing.
+- Gradle for build
+- Node, NPM, Bower for javascript pkg management
 
-
-
-
-
-UI Changes requires Node, NPM and Bower modules to be installed. I will go over the installation processes . (Hari)
-Theme choosen : https://bootswatch.com/flatly 
-
-UI Libs
+####UI Libs
 - "angular": "~1.4.8",
-- "bootstrap": "~3.3.6",
-- "font-awesome": "fontawesome#~4.5.0",
+- "angular-material": "~2.0",
 - "angular-ui-router": "~0.2.15",
-- "angular-ui-grid": "~3.0.7"
- 
+
+####Runtime details
+
+####Contact Details
+Spring, Mongo : Satish Terala
+Angular, NodeJS, Bower: Harikumar
+Twilio, ngrok : Zuber Sayed
+Screenleap : Sitaram Guruswamy
