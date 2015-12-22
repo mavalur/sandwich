@@ -14,6 +14,7 @@
 		
 		<script type="text/javascript">
 
+				var sharedata;
 				window.onload = function() {
 				    screenleap.onScreenShareStart = function() {
 				        alert('Your screen is now shared.');
@@ -21,12 +22,16 @@
 			       		$('.not-shared').hide();
 			       		$('.paused').hide();
 			       		$('.resumed').show();
+			       		$('#viewerUrl').attr('href', screenleap.getViewerUrl());
+			       		$('#viewerUrl').text(screenleap.getViewerUrl());
 				    };
 				    
 				    screenleap.onScreenShareEnd = function() {
 				        alert('Your screen share has ended.');
 			       		$('.shared').hide();
 			       		$('.not-shared').show();
+			       		$('#viewerUrl').attr('href', '');
+			       		$('#viewerUrl').text('');
 				    };
 				    
 				    screenleap.onPause = function() {
@@ -47,15 +52,18 @@
 				        alert('Error in ' + msg);
 				    };
 				}
-	
+
 			    function startShare() {
-			    	$.ajax({
-			        	url: "/screenshare"
-			    	}).done(function(data) {
-				    	screenleap.startSharing('NATIVE', data);
-			       		$('#viewerUrl').attr('href', data.viewerUrl);
-			       		$('#viewerUrl').text(data.viewerUrl);
-			    	});
+			    	if (sharedata === undefined || sharedata === null) {
+				    	$.ajax({
+				        	url: "/screenshare"
+				    	}).done(function(data) {
+					    	sharedata = data;
+					    	screenleap.startSharing('NATIVE', sharedata);
+				    	});
+				    } else {
+				    	screenleap.startSharing('NATIVE', sharedata);
+				    }
 			    }
 		    
 			    function pauseShare() {
@@ -68,8 +76,6 @@
 			    
 			    function stopShare() {
 			    	screenleap.stopSharing();
-			       		$('#viewerUrl').attr('href', '');
-			       		$('#viewerUrl').text('');
 			    }
 			    
 		</script>
