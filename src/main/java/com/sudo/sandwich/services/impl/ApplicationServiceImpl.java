@@ -1,7 +1,6 @@
 package com.sudo.sandwich.services.impl;
 
 import com.sudo.sandwich.json.domain.Application;
-import com.sudo.sandwich.json.domain.QApplication;
 import com.sudo.sandwich.repository.ApplicationRepository;
 import com.sudo.sandwich.services.ApplicationService;
 import org.springframework.stereotype.Component;

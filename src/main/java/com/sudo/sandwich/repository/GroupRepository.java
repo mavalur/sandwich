@@ -12,4 +12,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface GroupRepository extends MongoRepository<Group,String>,QueryDslPredicateExecutor<Group> {
+	Group findById(String groupId);
 }
