@@ -17,8 +17,9 @@ sudo_make_me_sandwich
 ####Technology Stack
 - Spring Boot running on Jetty
 - Twilio for Telephony, Bridge and Conference
-- Mongo DB for persistence 
+- Mongo DB for persistence hosted on AWS
 - Angular for UI
+- ngrok for secure tunnels to localhost 
 
 
 
