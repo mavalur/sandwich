@@ -1,6 +1,7 @@
 package com.sudo.sandwich.repository;
 
 import com.sudo.sandwich.json.domain.User;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,8 +9,8 @@ import org.springframework.stereotype.Repository;
  * Created by satishterala on 12/21/15.
  */
 @Repository
-public interface UserRepository extends PagingAndSortingRepository<User,String>{
+public interface UserRepository extends MongoRepository<User,String> {
 
-    User findByUserName();
+    User findByUserName(String userId);
 
 }

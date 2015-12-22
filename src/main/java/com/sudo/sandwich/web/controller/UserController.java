@@ -4,6 +4,7 @@ import com.sudo.sandwich.json.domain.User;
 import com.sudo.sandwich.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,7 +26,7 @@ public class UserController {
     @RequestMapping("/sudo/user")
     public
     @ResponseBody
-    User getUser(String userId) {
+    User getUser(@PathVariable String userId) {
         return userService.getUser(userId);
     }
 
