@@ -17,8 +17,8 @@
 				window.onload = function() {
 				    screenleap.onScreenShareStart = function() {
 				        alert('Your screen is now shared.');
-			       		$('.shared').hide();
-			       		$('.not-shared').show();
+			       		$('.shared').show();
+			       		$('.not-shared').hide();
 			       		$('.paused').hide();
 			       		$('.resumed').show();
 				    };
@@ -52,9 +52,9 @@
 			    	$.ajax({
 			        	url: "/screenshare"
 			    	}).done(function(data) {
-			    		var jsonData = JSON.parse(data);
-				    	screenleap.startSharing('NATIVE', jsonData);
-			       		$('#viewerUrl').append(jsonData.viewerUrl);
+				    	screenleap.startSharing('NATIVE', data);
+			       		$('#viewerUrl').attr('href', data.viewerUrl);
+			       		$('#viewerUrl').text(data.viewerUrl);
 			    	});
 			    }
 		    
@@ -68,6 +68,8 @@
 			    
 			    function stopShare() {
 			    	screenleap.stopSharing();
+			       		$('#viewerUrl').attr('href', '');
+			       		$('#viewerUrl').text('');
 			    }
 			    
 		</script>
@@ -80,8 +82,8 @@
         	<button class="shared paused" id="screenshare" onclick="resumeShare()">Resume Screen Share</button>
         	<button class="shared" id="screenshare" onclick="stopShare()">Stop Screen Share</button>
         	<p>
-        	<label id="label1">Viewer URL : </label>
-        	<label id="viewerUrl"/>
+        	<label id="label1">Screen Share View URL : </label>
+        	<a href="" id="viewerUrl" target="_blank"/>
         </div>
     </body>
 </html>

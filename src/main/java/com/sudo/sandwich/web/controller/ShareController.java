@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sudo.sandwich.services.UserService;
 
 import org.slf4j.Logger;
@@ -22,7 +24,6 @@ import javax.inject.Inject;
 @RestController
 public class ShareController {
 
-
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Inject
@@ -31,7 +32,7 @@ public class ShareController {
     @RequestMapping("/screenshare")
     public
     @ResponseBody
-    String shareScreen(String ntid) {
+    JsonNode shareScreen(String ntid) {
     	logger.info("Screen share presenter : " + ntid);
 		URL url;
 		try {
@@ -49,12 +50,12 @@ public class ShareController {
 				buf.append(line);
 			
 			rd.close();
-			String s = buf.toString();
-			return s;
+			JsonNode json= new ObjectMapper().readTree(buf.toString()); 
+			 
+			return json;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			return "";
+			return null;
 		}
     }
-
 }
