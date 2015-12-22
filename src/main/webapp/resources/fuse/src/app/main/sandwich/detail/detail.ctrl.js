@@ -9,14 +9,15 @@
     /** @ngInject */
     function DetailController(SampleData,$stateParams)
     {
-        var ctrl = this;
+        var vm = this; 
+        this.incId = $stateParams.incId;
+        this.widget5 = this.widget5 || {};
+        this.widget5.title = 'Recent Incident Issues';
 
-        // Data
-        ctrl.helloText = SampleData.data.helloText;
-        ctrl.incidentId = $stateParams.incId;
+        this.widget6= this.widget6 || {};
+        this.widget6.title = 'Task Distrubution';
 
-        // Methods
-
-        //////////
+        this.widget7= this.widget7 || {};
+        this.widget7.title = 'Some other widget';
     }
 })();

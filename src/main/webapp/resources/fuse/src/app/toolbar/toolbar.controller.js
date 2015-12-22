@@ -10,11 +10,15 @@
     function ToolbarController($rootScope, $mdSidenav, $translate, $mdToast)
     {
         var vm = this;
-
+        vm.userName = 'sudo Make me a sandwich';
         // Data
         vm.bodyEl = angular.element('body');
         $rootScope.global = {
             search: ''
+        };
+
+        vm.doSearch = function(){
+            alert($rootScope.global.search);
         };
         vm.userStatusOptions = [
             {
