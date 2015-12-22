@@ -12,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.inject.Inject;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
@@ -41,9 +42,75 @@ public class IncidentServiceTest {
     }
 
     @Test
+    public void insertIncidents() {
+
+        Incident incident = new Incident();
+        incident.setId("INC1000");
+        incident.setStatus("CLOSED");
+        incident.setOwnerId("SaiyeZ");
+        incident.setWorkSummary("The system is impact due to ongoing network outage");
+        incident.setApplicationId("PC");
+        incident.setCreatedOn(LocalDateTime.now());
+        incident.setClosedOn(LocalDateTime.now());
+        incident.setRootCause("Network outage");
+        incident.setIncidentSummary("Exception occurred while saving the records");
+        incidentRepository.insert(incident);
+
+        incident = new Incident();
+        incident.setId("INC1001");
+        incident.setStatus("CLOSED");
+        incident.setOwnerId("SaiyeZ");
+        incident.setWorkSummary("The system is impact due to ongoing network outage");
+        incident.setApplicationId("PM");
+        incident.setCreatedOn(LocalDateTime.now());
+        incident.setClosedOn(LocalDateTime.now());
+        incident.setRootCause("Network outage");
+        incident.setIncidentSummary("Exception occurred while saving the records");
+        incidentRepository.insert(incident);
+
+        incident = new Incident();
+        incident.setId("INC1002");
+        incident.setStatus("CLOSED");
+        incident.setOwnerId("SaiyeZ");
+        incident.setWorkSummary("The system is impact due to ongoing network outage");
+        incident.setApplicationId("PL");
+        incident.setCreatedOn(LocalDateTime.now());
+        incident.setClosedOn(LocalDateTime.now());
+        incident.setRootCause("Network outage");
+        incident.setIncidentSummary("Exception occurred while saving the records");
+        incidentRepository.insert(incident);
+
+        incident = new Incident();
+        incident.setId("INC1003");
+        incident.setStatus("OPEN");
+        incident.setOwnerId("SaiyeZ");
+        incident.setApplicationId("CASH");
+        incident.setCreatedOn(LocalDateTime.now());
+        incident.setClosedOn(LocalDateTime.now());
+        incident.setIncidentSummary("org.springframework.boot.ResourceException: .... ");
+        incidentRepository.insert(incident);
+
+        incident = new Incident();
+        incident.setId("INC1004");
+        incident.setStatus("OPEN");
+        incident.setOwnerId("SaiyeZ");
+        incident.setApplicationId("FI");
+        incident.setCreatedOn(LocalDateTime.now());
+        incident.setClosedOn(LocalDateTime.now());
+        incident.setIncidentSummary("Spring Framework Exception");
+        incidentRepository.insert(incident);
+    }
+
+    @Test
     public void updateOwner() {
 
         incidentService.assignOwner("INC1234", "SaiyeZ");
+    }
+
+    @Test
+    public void updateStatus() {
+
+        incidentService.updateStatus("INC1234", "OPEN");
     }
 
     @Test

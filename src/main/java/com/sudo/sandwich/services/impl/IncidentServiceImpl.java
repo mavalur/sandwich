@@ -2,13 +2,16 @@ package com.sudo.sandwich.services.impl;
 
 import com.google.common.base.Joiner;
 import com.sudo.sandwich.json.domain.Incident;
+import com.sudo.sandwich.json.domain.User;
 import com.sudo.sandwich.repository.IncidentRepository;
 import com.sudo.sandwich.services.IncidentService;
+import com.sudo.sandwich.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
+import java.util.Collection;
 
 /**
  * Created by Zuber on 12/22/15.
@@ -20,6 +23,9 @@ public class IncidentServiceImpl implements IncidentService {
     Logger logger = LoggerFactory.getLogger(getClass());
     @Inject
     IncidentRepository incidentRepository;
+
+    @Inject
+    UserService userService;
 
     @Override
     public void updateWorkSummary(String incidentId, String workSummary, boolean append) {
@@ -58,5 +64,14 @@ public class IncidentServiceImpl implements IncidentService {
         } else {
             logger.debug("Empty incident");
         }
+    }
+
+    @Override
+    public Collection<Incident> getIncidentsByUser(String userId) {
+
+        User user = userService.getUser(userId);
+        String groupId = user.getGroupId();
+
+        return incidentRepository.findAll();
     }
 }

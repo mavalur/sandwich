@@ -15,4 +15,6 @@ public interface ApplicationService {
 
     public Collection<Application> getApplicationForBusinessUnit(String businessUnit);
 
+    Application getApplicationBySupportGroup(String supportGrp);
+
 }

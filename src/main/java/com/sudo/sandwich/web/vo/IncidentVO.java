@@ -17,5 +17,11 @@ public class IncidentVO {
 
     Collection<Incident> incidents;
 
+    public Collection<Incident> getIncidents() {
+        return incidents;
+    }
 
+    public void setIncidents(Collection<Incident> incidents) {
+        this.incidents = incidents;
+    }
 }

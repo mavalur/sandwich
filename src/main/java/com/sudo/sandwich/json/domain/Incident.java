@@ -22,6 +22,8 @@ public class Incident {
     List<ChatStatement> chatStatements;
     @Id
     private String id;
+    @JsonProperty("application_id")
+    private String applicationId;
     @JsonProperty("summary")
     private String incidentSummary;
     // Refers to User.id
